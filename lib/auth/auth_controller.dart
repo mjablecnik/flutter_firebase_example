@@ -36,7 +36,7 @@ class AuthController extends GetxController {
         email: loginData.name,
         password: loginData.password,
       )).user;
-      user.sendEmailVerification(ActionCodeSettings(url: "https://localhost"));
+      user.sendEmailVerification(ActionCodeSettings(url: afterEmailVerificationUrl));
 
       model.User.fromFirebaseUser(user).save();
 

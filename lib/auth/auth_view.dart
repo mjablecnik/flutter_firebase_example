@@ -11,7 +11,7 @@ class LoginView extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return FlutterLogin(
       title: 'MY-CORP',
-      logo: 'assets/icon.png',
+      logo: logoPath,
       onLogin: controller.login,
       onSignup: controller.register,
       onSubmitAnimationCompleted: () {
