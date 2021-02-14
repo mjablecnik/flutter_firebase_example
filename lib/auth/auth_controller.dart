@@ -30,15 +30,25 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<String> register(loginData) async {
+  Future<String> register(LoginData loginData) async {
     try {
       final User user = (await _auth.createUserWithEmailAndPassword(
         email: loginData.name,
         password: loginData.password,
       )).user;
-      //user.sendEmailVerification();
+      user.sendEmailVerification(ActionCodeSettings(url: "https://localhost"));
 
       model.User.fromFirebaseUser(user).save();
+
+      return null;
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<String> recoverPassword(String email) async {
+    try {
+      _auth.sendPasswordResetEmail(email: email);
 
       return null;
     } catch (e) {

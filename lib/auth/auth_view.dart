@@ -17,11 +17,10 @@ class LoginView extends GetView<AuthController> {
       onSubmitAnimationCompleted: () {
         Get.offNamed(Routes.ITEMS);
       },
-      onRecoverPassword: (_) => Future(null),
+      onRecoverPassword: controller.recoverPassword,
       messages: LoginMessages(usernameHint: "Email"),
       headerMarginTop: 80,
       headerMarginBottom: 30,
-      emailValidator: (email) { return null; },
     );
   }
 }
