@@ -2,6 +2,7 @@
 *.freezed.dart
 *.g.dart
 pubspec.lock
+google-services.json
 
 # Miscellaneous
 *.class
