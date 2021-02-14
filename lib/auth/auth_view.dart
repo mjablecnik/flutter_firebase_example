@@ -10,7 +10,7 @@ class LoginView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
-      title: 'ECORP',
+      title: 'MY-CORP',
       logo: 'assets/icon.png',
       onLogin: (email) => controller.login(email),
       onSignup: (_) => Future.delayed(Duration(seconds: 5), () => null),
@@ -20,7 +20,7 @@ class LoginView extends GetView<AuthController> {
         ));
       },
       onRecoverPassword: (_) => Future(null),
-      messages: LoginMessages(usernameHint: "Username"),
+      messages: LoginMessages(usernameHint: "Email"),
       headerMarginTop: 80,
       headerMarginBottom: 30,
       emailValidator: (email) { return null; },
