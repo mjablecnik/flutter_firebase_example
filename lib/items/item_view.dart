@@ -5,7 +5,7 @@ import 'package:login/dialog/dialog_view.dart';
 import 'package:get/get.dart';
 import 'package:login/items/item_controller.dart';
 
-class BasicView extends GetView<BasicController> {
+class ItemView extends GetView<BasicController> {
   @override
   Widget build(context) {
     return Scaffold(

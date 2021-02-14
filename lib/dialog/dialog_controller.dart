@@ -4,24 +4,11 @@ import 'package:get/get.dart';
 
 class DialogController extends GetxController {
 
-  TextEditingController dialogInput;
+  final TextEditingController dialogInput = TextEditingController();
   final formKey = GlobalKey<FormState>();
   var model;
   String title;
   Function onSubmit;
-
-  void onInit() {
-    super.onInit();
-
-    dialogInput = TextEditingController();
-    print("Create dialogController");
-  }
-
-  void onClose() {
-    super.onClose();
-    dialogInput.dispose();
-    print("Dispose dialogController");
-  }
 
   void submit() {
     if (formKey.currentState.validate()) {
