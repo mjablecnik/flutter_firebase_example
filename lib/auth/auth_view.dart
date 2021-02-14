@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:get/get.dart';
 import 'package:login/auth/auth_controller.dart';
-import 'package:login/items/item_view.dart';
+import 'package:login/common/constants.dart';
 
 
 class LoginView extends GetView<AuthController> {
@@ -12,12 +12,10 @@ class LoginView extends GetView<AuthController> {
     return FlutterLogin(
       title: 'MY-CORP',
       logo: 'assets/icon.png',
-      onLogin: (email) => controller.login(email),
-      onSignup: (_) => Future.delayed(Duration(seconds: 5), () => null),
+      onLogin: controller.login,
+      onSignup: controller.register,
       onSubmitAnimationCompleted: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => ItemView(),
-        ));
+        Get.offNamed(Routes.ITEMS);
       },
       onRecoverPassword: (_) => Future(null),
       messages: LoginMessages(usernameHint: "Email"),

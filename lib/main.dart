@@ -9,7 +9,7 @@ import 'package:login/items/item_controller.dart';
 import 'package:login/dialog/dialog_controller.dart';
 import 'package:login/auth/auth_view.dart';
 import 'package:login/items/item_view.dart';
-import 'package:login/user/user_model.dart';
+import 'package:login/auth/user_model.dart';
 import 'package:path_provider/path_provider.dart';
 
 
