@@ -3,10 +3,16 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:get/get.dart';
+import 'package:login/common/constants.dart';
 import 'package:login/user/user_model.dart' as model;
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  logout() {
+    model.User.remove();
+    Get.offNamed(Routes.LOGIN);
+  }
 
   Future<String> login(LoginData loginData) async {
     try {

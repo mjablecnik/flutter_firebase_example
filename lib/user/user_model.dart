@@ -30,4 +30,8 @@ class User {
   factory User.load() {
     return Hive.box(cacheName).get("user");
   }
+
+  static remove() {
+    return Hive.box(cacheName).clear();
+  }
 }
