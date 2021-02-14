@@ -22,13 +22,15 @@ environment:
 
 dependencies:
   get: ^3.25.4
-  get_storage: ^1.4.0
   flutter:
     sdk: flutter
   flutter_login:
     git: https://github.com/hovadur/flutter_login.git
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
+  path_provider: ^1.6.24
+  hive: ^1.4.4+1
+  hive_flutter: ^0.3.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,6 +40,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^0.8.2
+  build_runner: ^1.11.0
 
 
 # For information on the generic Dart part of this file, see the

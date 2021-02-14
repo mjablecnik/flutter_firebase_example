@@ -4,3 +4,5 @@ class Routes {
   static const ITEMS = '/items';
   static const JOTTINGS = '/jottings';
 }
+
+const cacheName = "appCache";

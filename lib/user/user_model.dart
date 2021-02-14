@@ -1,28 +1,33 @@
+import 'package:hive/hive.dart';
+import 'package:login/common/constants.dart';
+
+part 'user_model.g.dart';
+
+@HiveType(typeId: 1)
 class User {
+
+  @HiveField(0)
   String displayName;
+
+  @HiveField(1)
   String email;
+
+  @HiveField(2)
   String phone;
+
+  @HiveField(3)
   String avatarUrl;
+
+  @HiveField(4)
   String bio;
 
   User();
 
-  Map<String, String> toJson() {
-    return {
-      "displayName": displayName,
-      "email": email,
-      "phone": phone,
-      "avatarUrl": avatarUrl,
-      "bio": bio,
-    };
+  save() {
+    Hive.box(cacheName).put("user", this);
   }
 
-  factory User.fromJson(map) {
-    return User()
-      ..displayName = map["displayName"]
-      ..email = map["email"]
-      ..phone = map["phone"]
-      ..avatarUrl = map["avatarUrl"]
-      ..bio = map["bio"];
+  factory User.load() {
+    return Hive.box(cacheName).get("user");
   }
 }
