@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:login/auth/auth_controller.dart';
@@ -6,7 +7,7 @@ import 'package:login/dialog/dialog_view.dart';
 import 'package:get/get.dart';
 import 'package:login/items/item_controller.dart';
 
-class ItemView extends GetView<BasicController> {
+class ItemView extends GetView<ItemController> {
   final authController = Get.find<AuthController>();
 
   @override
@@ -26,14 +27,14 @@ class ItemView extends GetView<BasicController> {
       body: Obx(
         () => ListView.builder(
           padding: const EdgeInsets.all(10),
-          itemCount: controller.simpleList.length,
+          itemCount: controller.items.length,
           itemBuilder: (context, index) {
             return Container(
               height: 50,
               margin: const EdgeInsets.all(5),
               color: Colors.amber[600],
               child: Center(
-                child: Text(controller.simpleList[index].name),
+                child: Text(controller.items[index].name),
               ),
             );
           },

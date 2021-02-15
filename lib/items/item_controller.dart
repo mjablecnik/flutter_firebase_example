@@ -1,13 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:login/items/Item_repository.dart';
 import 'package:login/items/item_model.dart';
 
-class BasicController extends GetxController {
-  var count = 0.obs;
-  List<Item> simpleList = <Item>[Item("test1"), Item("test2")].obs;
+class ItemController extends GetxController {
+  final itemRepository = Get.find<ItemRepository>();
 
-  increment() => count++;
+  final List<Item> _simpleList = <Item>[].obs;
+
+  List<Item> get items => _simpleList;
+
+  onInit() async {
+    super.onInit();
+    _simpleList.addAll(await itemRepository.getItems);
+  }
 
   addItem(Item item) {
-    simpleList.add(item);
+    _simpleList.add(item);
+    return itemRepository.addItem(item);
   }
 }

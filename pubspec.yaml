@@ -28,9 +28,12 @@ dependencies:
     git: https://github.com/hovadur/flutter_login.git
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
+  cloud_firestore: ^0.16.0
   path_provider: ^1.6.24
+  json_serializable: ^3.5.1
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
+
 
 
   # The following adds the Cupertino Icons font to your application.

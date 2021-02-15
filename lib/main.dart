@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:login/auth/auth_controller.dart';
 import 'package:login/common/constants.dart';
+import 'package:login/items/Item_repository.dart';
 import 'package:login/items/item_controller.dart';
 import 'package:login/dialog/dialog_controller.dart';
 import 'package:login/auth/auth_view.dart';
@@ -31,7 +32,8 @@ Future<void> main() async {
       smartManagement: SmartManagement.full,
       initialRoute: initRoute,
       initialBinding: BindingsBuilder(() {
-        Get.lazyPut(() => BasicController(), fenix: true);
+        Get.lazyPut(() => ItemController(), fenix: true);
+        Get.lazyPut(() => ItemRepository(), fenix: true);
         Get.lazyPut(() => AuthController(), fenix: true);
         Get.lazyPut(() => DialogController(), fenix: true);
       }),
