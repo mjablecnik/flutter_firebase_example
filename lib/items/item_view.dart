@@ -29,12 +29,32 @@ class ItemView extends GetView<ItemController> {
           padding: const EdgeInsets.all(10),
           itemCount: controller.items.length,
           itemBuilder: (context, index) {
+            var item = controller.items[index];
             return Container(
               height: 50,
               margin: const EdgeInsets.all(5),
               color: Colors.amber[600],
-              child: Center(
-                child: Text(controller.items[index].name),
+              child: Row(
+                children: [
+                  Spacer(),
+                  Text(item.name),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 4),
+                    child: ButtonBar(
+                      children: [
+                        GestureDetector(
+                          onTap: () => openDialog(context, item, "Change item name", controller.changeItem),
+                          child: Icon(Icons.edit),
+                        ),
+                        GestureDetector(
+                          onTap: () => controller.removeItem(item),
+                          child: Icon(Icons.clear),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             );
           },
@@ -42,19 +62,21 @@ class ItemView extends GetView<ItemController> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return CustomDialog(
-                title: "Add item",
-                model: Item(""),
-                onSubmit: (item) => controller.addItem(item),
-              );
-            },
-          )
-        },
+        onPressed: () => openDialog(context, Item(""), "Add item", controller.addItem),
       ),
+    );
+  }
+
+  openDialog(context, item, title, onSubmit) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomDialog(
+          title: title,
+          model: item,
+          onSubmit: onSubmit,
+        );
+      },
     );
   }
 }

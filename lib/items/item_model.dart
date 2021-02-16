@@ -5,6 +5,7 @@ part 'item_model.g.dart';
 @JsonSerializable(nullable: false)
 class Item {
 
+  String id;
   String name;
   String description = "";
   DateTime created = DateTime.now();

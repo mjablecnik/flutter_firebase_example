@@ -10,8 +10,12 @@ class ItemRepository extends GetxService {
       .orderBy('created', descending: false)
       .get()
       .then((QuerySnapshot snapshot) =>
-          snapshot.docs.map((DocumentSnapshot s) => Item.fromJson(s.data())).toList(),
+          snapshot.docs.map((DocumentSnapshot s) => Item.fromJson(s.data())..id = s.id).toList(),
       );
 
-  addItem(Item item) => _items.add(item.toJson());
+  void addItem(Item item) => _items.add(item.toJson());
+
+  void updateItem(Item item) => _items.doc(item.id).update(item.toJson());
+
+  void deleteItem(Item item) => _items.doc(item.id).delete();
 }

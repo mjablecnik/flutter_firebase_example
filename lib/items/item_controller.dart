@@ -19,4 +19,16 @@ class ItemController extends GetxController {
     _simpleList.add(item);
     return itemRepository.addItem(item);
   }
+
+  changeItem(Item item) {
+    itemRepository.updateItem(item);
+    var index = _simpleList.indexOf(item);
+    _simpleList.removeAt(index);
+    _simpleList.insert(index, item);
+  }
+
+  removeItem(Item item) {
+    _simpleList.remove(item);
+    itemRepository.deleteItem(item);
+  }
 }
